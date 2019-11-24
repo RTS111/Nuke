@@ -167,8 +167,8 @@ async def ping(ctx):
   latency = bot.latency  
   await ctx.send(latency)
   print(latency)
-  await ctx.send("Online and ready to go")
-  print ("Online")   
+  await ctx.send("Pong!")
+  print ("Pong!")   
  
 @bot.command(pass_context=True)
 async def admin(ctx):
