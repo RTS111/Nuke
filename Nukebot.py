@@ -258,6 +258,4 @@ async def channels(ctx, amount=500):
     for i in range(amount):
         await guild.create_text_channel(random.choice(CHANNEL_NAMES))
 
-keep_alive()
-TOKEN = os.environ.get("DISCORD_BOT_SECRET")
-bot.run(TOKEN)
+bot.run(Bot Token Here)
