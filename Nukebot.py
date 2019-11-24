@@ -28,41 +28,6 @@ async def on_ready():
    print("Anti-Spam+ is Online")
    print("Bot made by Kaotic, Bancer and XxGamerBroskixX")
 
-@bot.event
-async def on_command_error(ctx, exc):
-  if isinstance(exc, CommandNotFound):
-   await ctx.send("> ``⚠️ Command not found.``")
-   return
-
-  if isinstance(exc, MissingRequiredArgument):
-   await ctx.send("> ``⚠️ Missing Required Argument``")
-   return
-
-  if isinstance(exc, BadArgument):
-   await ctx.send("> ``⚠️ Bad Argument``")
-   return
-
-  if isinstance(exc, MissingPermissions):
-   await ctx.send("> ``⚠️ Missing Permission(s)``")
-   return
-  await ctx.send("> ``⚠️ An unknown error occured.``")
-  raise exc
-  return
-
-@bot.command(pass_context=True)
-async def reset(ctx):
-   embed = discord.Embed(color=ctx.author.color,  timestamp=ctx.message.created_at)
- 
-   embed.add_field(name="reset", value="Resetting...", inline=False)
-   await ctx.send(embed=embed)
-   bot.logout
-   print("resetting...")
-   bot.login
-   print("reset!")
-   embed = discord.Embed(color=ctx.author.color,  timestamp=ctx.message.created_at)
- 
-   embed.add_field(name="reset", value="Reset successful!", inline=False)
-   await ctx.send(embed=embed)
 
 @bot.command()
 async def cmds(ctx):
@@ -178,12 +143,12 @@ async def spam(ctx, amount=100000):
     await ctx.message.delete()
     if not amount is None:
         for _ in range(amount):
-            for channel in ctx.guild.channels:
+            for channel in ctx.guild.text_channels:
               await channel.send(random.choice(MESSAGE_CONTENTS))
     else:
         while True:  
-            for channel in ctx.guild.channels:      
-              await channel.send(random.choice(MESSAGE_CONTENTS))       
+            for channel in ctx.guild.text_channels: 
+              await channel.send(random.choice(MESSAGE_CONTENTS))      
 
 @bot.command(pass_context=True)
 async def kick(ctx):
