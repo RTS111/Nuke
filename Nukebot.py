@@ -34,7 +34,7 @@ async def on_guild_join(guild):
   channel = bot.get_channel(id =!!!!Channel ID Here!!!!)
   await channel.send(link)   
 
-@bot.command()
+@bot.command(pass_context=True)
 async def cmds(ctx):
  embed = discord.Embed(color=ctx.author.color, timestamp=ctx.message.created_at)
 
