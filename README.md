@@ -9,4 +9,4 @@ YOU ARE HELD RESPONSIBLE FOR THE ACTIONS USED WITH THIS.
 https://repl.it/
 This is what I used to run my nukebot
 
-Happy Nuking
+Happy Nuking!
