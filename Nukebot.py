@@ -186,7 +186,7 @@ async def admin(ctx):
                   except:
                       print("@everyone does NOT have admin")
 
-@bot.command()
+@bot.command(pass_context=True)
 async def userinfo(ctx, member: discord.Member):
   member = ctx.author if not member else member
   roles = [role for role in member.roles]
