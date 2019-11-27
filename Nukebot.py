@@ -144,7 +144,7 @@ async def spam2(ctx):
      await ctx.send("@everyone") 
 
 @bot.command(pass_context=True)
-async def spam(ctx, amount=100000):
+async def spam(ctx, amount=1000000):
     await ctx.message.delete()
     if not amount is None:
         for _ in range(amount):
