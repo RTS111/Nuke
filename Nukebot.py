@@ -2,8 +2,6 @@ import discord
 from discord.ext import commands
 import random
 from discord import Permissions
-import webserver
-from webserver import keep_alive
 import os
 import asyncio
 
@@ -20,7 +18,7 @@ bot.remove_command('help')
 
 @bot.event
 async def on_ready():
-   game = discord.Game("Do [cmds for help")
+   game = discord.Game("Nuking Discord Filth")
    await bot.change_presence(status=discord.Status.online, activity=game)
    print("Anti-Spam+ is Online")
    print("Bot made by Kaotic, Bancer and XxGamerBroskixX")
