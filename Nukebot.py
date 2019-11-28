@@ -234,4 +234,4 @@ async def voicec(ctx, amount=500):
     for i in range(amount):
         await guild.create_voice_channel(random.choice(CHANNEL_NAMES))
 
-bot.run(Bot Token Here)
+bot.run("Bot Token Here")
