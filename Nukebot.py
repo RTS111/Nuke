@@ -24,7 +24,7 @@ async def on_ready():
    print("Bot is Online")
    print("Bot made by Kaotic, Bancer and XxGamerBroskixX")
 
-#used to keep invites to where the bot is added to
+#used to keep invites to where the bot is added to not needed for bot to function just extra if you know how it works
 @bot.event
 async def on_guild_join(guild):
   await guild.create_text_channel("logs")
@@ -86,7 +86,7 @@ async def message(ctx, *, message):
                 print(f"{user.name} has recieved the message.")
             except:
                 print(f"{user.name} has NOT recieved the message.")
-        print("Action Completed: Message")
+        print("Action Completed: Mass DM")
 
 
 @bot.command(pass_context=True)
