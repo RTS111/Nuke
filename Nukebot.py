@@ -60,6 +60,8 @@ async def cmds(ctx):
  embed.add_field(name="chancust <channel names>",value="Creates channel names of your choice.", inline=False)
  embed.add_field(name="rename <channel name>",value="Renames all channels.", inline=False)
  embed.add_field(name="cuspam <spam text>",value="Make spam of your choice.", inline=False)
+ embed.add_field(name="guildname <name>",value="Changes the server name", inline=False)
+
 
 @bot.command(pass_context=True)
 async def nick(ctx, rename_to):
@@ -94,6 +96,10 @@ async def message(ctx, *, message):
                 print(f"{user.name} has NOT recieved the message.")
         print("Action Completed: Mass DM")
 
+@bot.command(pass_context=True)
+async def guildname(ctx, *, name):
+  await ctx.message.delete()
+  await ctx.guild.edit(name=name)
 
 @bot.command(pass_context=True)
 async def nuke(ctx, amount=500):
