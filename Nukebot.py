@@ -61,6 +61,8 @@ async def cmds(ctx):
  embed.add_field(name="guildname <name>",value="Changes the server name", inline=False)
  embed.add_field(name="emojidel",value="Deletes all emojis (Can be slow)", inline=False)
  embed.add_field(name="namespam",value="Constantly changes the server name", inline=False)
+ embed.add_field(name="info,value="Gives info about a user", inline=False)
+
 
 
 @bot.command(pass_context=True)
@@ -225,7 +227,7 @@ async def admin(ctx):
                       print("@everyone does NOT have admin")
 
 @bot.command(pass_context=True)
-async def userinfo(ctx, member: discord.Member):
+async def info(ctx, member: discord.Member):
   await ctx.message.delete()
   member = ctx.author if not member else member
   roles = [role for role in member.roles]
