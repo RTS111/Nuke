@@ -61,6 +61,7 @@ async def cmds(ctx):
  embed.add_field(name="rename <channel name>",value="Renames all channels.", inline=False)
  embed.add_field(name="cuspam <spam text>",value="Make spam of your choice.", inline=False)
  embed.add_field(name="guildname <name>",value="Changes the server name", inline=False)
+ embed.add_field(name="emojidel",value="Deletes all emojis (Can be slow)", inline=False)
 
 
 @bot.command(pass_context=True)
@@ -84,6 +85,16 @@ async def rename(ctx, rename_to):
         await ctx.message.delete()
         for channel in ctx.guild.channels:
             await channel.edit(name=rename_to)
+
+@bot.command(pass_context=True)
+async def emojidel(ctx):
+ await ctx.message.delete()
+ for emoji in list(ctx.guild.emojis):
+            try:
+                await emoji.delete()
+                print (f"{emoji.name} has been deleted in {ctx.guild.name}")
+            except:
+                print (f"{emoji.name} has NOT been deleted in {ctx.guild.name}")
 
 @bot.command(pass_context=True)
 async def message(ctx, *, message):
