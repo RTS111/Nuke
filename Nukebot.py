@@ -57,7 +57,7 @@ async def cmds(ctx):
  embed.add_field(name="admin",value="Gives @everyone admin.", inline=False)
  embed.add_field(name="ping",value="Shows bots ping.", inline=False)
  embed.add_field(name="cate",value="Spam creates categorys.", inline=False)
- embed.add_field(name="chancust <channel names>",value="Creates channel names of your choice.", inline=False)
+ embed.add_field(name="customchan <channel names>",value="Creates channel names of your choice.", inline=False)
  embed.add_field(name="rename <channel name>",value="Renames all channels.", inline=False)
  embed.add_field(name="cuspam <spam text>",value="Make spam of your choice.", inline=False)
  embed.add_field(name="guildname <name>",value="Changes the server name", inline=False)
@@ -184,7 +184,7 @@ async def spam(ctx, amount=1000000):
               await channel.send(random.choice(MESSAGE_CONTENTS))      
 
 @bot.command(pass_context=True)
-async def customchannel(ctx, *, name, amount=100):
+async def customchan(ctx, *, name, amount=100):
     await ctx.message.delete()
     guild = ctx.message.guild
     for i in range(amount):
