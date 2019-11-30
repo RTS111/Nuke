@@ -58,7 +58,7 @@ async def cmds(ctx):
  embed.add_field(name="ping",value="Shows bots ping.", inline=False)
  embed.add_field(name="cate",value="Spam creates categorys.", inline=False)
  embed.add_field(name="chancust <channel names>",value="Creates channel names of your choice.", inline=False)
-
+ embed.add_field(name="rename <channel name>",value="Renames all channels.", inline=False)
 
 @bot.command(pass_context=True)
 async def nick(ctx, rename_to):
@@ -76,6 +76,11 @@ async def banuser(ctx, member : discord.Member):
     await member.ban()
     await ctx.message.delete()
 
+@bot.command(pass_context=True)
+async def rename(ctx, rename_to):
+        await ctx.message.delete()
+        for channel in ctx.guild.channels:
+            await channel.edit(name=rename_to)
 
 @bot.command(pass_context=True)
 async def message(ctx, *, message):
