@@ -59,7 +59,7 @@ async def cmds(ctx):
  embed.add_field(name="guildname <name>",value="Changes the server name", inline=False)
  embed.add_field(name="emojidel",value="Deletes all emojis (Can be slow)", inline=False)
  embed.add_field(name="namespam",value="Constantly changes the server name", inline=False)
- embed.add_field(name="info,value="Gives info about a user", inline=False)
+ embed.add_field(name="info",value="Shows user info", inline=False)
 
 @bot.command(pass_context=True)
 async def nick(ctx, rename_to):
