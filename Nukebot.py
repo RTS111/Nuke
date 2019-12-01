@@ -51,6 +51,11 @@ async def cmds(ctx):
  embed.add_field(name="banuser <user>", value="Bans specified user..", inline=False)
  embed.add_field(name="purge <amount>", value="Purges messages.", inline=False)
  embed.add_field(name="admin",value="Gives @everyone admin.", inline=False)
+ await ctx.send(embed=embed)
+ embed = discord.Embed(color=ctx.author.color, timestamp=ctx.message.created_at)
+
+ embed.set_author(name="Nuke Commands Page 2", icon_url=ctx.author.avatar_url)
+
  embed.add_field(name="ping",value="Shows bots ping.", inline=False)
  embed.add_field(name="cate",value="Spam creates categories.", inline=False)
  embed.add_field(name="customchan <channel names>",value="Creates channel names of your choice.", inline=False)
@@ -59,7 +64,9 @@ async def cmds(ctx):
  embed.add_field(name="guildname <name>",value="Changes the server name", inline=False)
  embed.add_field(name="emojidel",value="Deletes all emojis (Can be slow)", inline=False)
  embed.add_field(name="namespam",value="Constantly changes the server name", inline=False)
- embed.add_field(name="info",value="Shows user info", inline=False)
+ embed.add_field(name="info",value="Gives user info.", inline=False)
+
+ await ctx.send(embed=embed)
 
 @bot.command(pass_context=True)
 async def nick(ctx, rename_to):
