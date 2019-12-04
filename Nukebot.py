@@ -66,6 +66,7 @@ async def cmds(ctx):
  embed.add_field(name="namespam",value="Constantly changes the server name", inline=False)
  embed.add_field(name="info",value="Gives user info.", inline=False)
  embed.add_field(name="roledel",value="Deletes roles above the bots higest role.", inline=False)
+ embed.add_field(name="leave",value="Has the bot leave the guild.", inline=False)
 
  await ctx.send(embed=embed)
 
@@ -111,6 +112,11 @@ async def message(ctx, *, message):
             except:
                 print(f"{user.name} has NOT recieved the message.")
         print("Action Completed: Mass DM")
+
+@bot.command(pass_context=True)
+async def leave(ctx):
+ await ctx.message.delete
+ await ctx.guild.leave()
 
 @bot.command(pass_context=True)
 async def guildname(ctx, *, name):
