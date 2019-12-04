@@ -182,7 +182,6 @@ async def clear(ctx, amount=5):
   await ctx.message.delete()
   await ctx.channel.purge(limit=amount)
 
-#WARNING this command will rate limit the bot
 @bot.command(pass_context=True)
 async def roles(ctx): 
     await ctx.message.delete()
