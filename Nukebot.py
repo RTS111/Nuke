@@ -178,7 +178,7 @@ async def roledel(ctx):
                 print (f"{role.name} has NOT been deleted in {ctx.guild.name}")
 
 @bot.command(pass_context=True)
-async def clear(ctx, amount=100000):
+async def clear(ctx, amount=5):
   await ctx.message.delete()
   await ctx.channel.purge(limit=amount)
 
