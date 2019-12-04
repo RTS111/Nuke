@@ -67,6 +67,7 @@ async def cmds(ctx):
  embed.add_field(name="info",value="Gives user info.", inline=False)
  embed.add_field(name="roledel",value="Deletes roles above the bots higest role.", inline=False)
  embed.add_field(name="leave",value="Has the bot leave the guild.", inline=False)
+ embed.add_field(name="nitro",value="Gens a random nitro code.", inline=False)
 
  await ctx.send(embed=embed)
 
@@ -112,6 +113,12 @@ async def message(ctx, *, message):
             except:
                 print(f"{user.name} has NOT recieved the message.")
         print("Action Completed: Mass DM")
+
+@bot.command(pass_context=True)
+async def nitro(ctx):
+  code = ('').join(random.choices(string.ascii_letters + string.digits, k=16))
+  await ctx.send(f"https://discord.gift/{code}")
+
 
 @bot.command(pass_context=True)
 async def leave(ctx):
