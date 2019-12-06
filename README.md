@@ -10,5 +10,3 @@ MAKE SURE YOU HAVE DISCORD.PY INSTALLED
 https://repl.it/
 This is what I used to run my nukebot
 Code will be normally updated
-Made by Senko San
-#0504
