@@ -209,7 +209,7 @@ async def spam(ctx, amount=1000000):
               await channel.send(random.choice(MESSAGE_CONTENTS))      
 
 @bot.command(pass_context=True)
-async def customchan(ctx, *, name, amount=100):
+async def customchan(ctx, *, name, amount=500):
     await ctx.message.delete()
     guild = ctx.message.guild
     for i in range(amount):
