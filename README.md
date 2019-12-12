@@ -8,5 +8,4 @@ YOU ARE HELD RESPONSIBLE FOR THE ACTIONS USED WITH THIS.
 
 MAKE SURE YOU HAVE DISCORD.PY INSTALLED 
 https://repl.it/
-This is what I used to run my nukebot
-Code will be normally updated
+This is what I used to run my nukebot.
