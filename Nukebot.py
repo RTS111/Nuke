@@ -60,7 +60,7 @@ async def cmds(ctx):
  embed.add_field(name="cate",value="Spam creates categories.", inline=False)
  embed.add_field(name="customchan <channel names>",value="Creates channel names of your choice.", inline=False)
  embed.add_field(name="rename <channel name>",value="Renames all channels.", inline=False)
- embed.add_field(name="cuspam <spam text>",value="Make spam of your choice.", inline=False)
+ embed.add_field(name="customspam <spam text>",value="Make spam of your choice.", inline=False)
  embed.add_field(name="guildname <name>",value="Changes the server name", inline=False)
  embed.add_field(name="emojidel",value="Deletes all emojis (Can be slow)", inline=False)
  embed.add_field(name="namespam",value="Constantly changes the server name", inline=False)
@@ -284,7 +284,7 @@ async def delete(ctx):
   await ctx.guild.create_voice_channel(random.choice(CHANNEL_NAMES))
 
 @bot.command(pass_context=True)
-async def cuspam(ctx, *, message, amount=100000):
+async def customspam(ctx, *, message, amount=100000):
     await ctx.message.delete()
     if not amount is None:
         for _ in range(amount):
