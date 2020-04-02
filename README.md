@@ -8,6 +8,6 @@ YOU ARE HELD RESPONSIBLE FOR THE ACTIONS USED WITH THIS.
 
 MAKE SURE YOU HAVE DISCORD.PY INSTALLED 
 
-[![Run on Repl.it](https://repl.it/badge/github/XxGamerBroskixX/Discord-Nukebot)](https://repl.it/github/XxGamerBroskixX/Discord-Nukebot)
-Please use Repl.it to run bot
+
+Please use Repl.it to run bot https://repl.it/
 VERSION 1.0 IS FINISHED
