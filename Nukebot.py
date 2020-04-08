@@ -49,7 +49,7 @@ async def cmds(ctx):
  embed.add_field(name="kick", value="Kicks everyone below bot role.", inline=False)
  embed.add_field(name="ban", value="Bans all users below bot role.", inline=False)
  embed.add_field(name="banuser <user>", value="Bans specified user..", inline=False)
- embed.add_field(name="purge <amount>", value="Purges messages.", inline=False)
+ embed.add_field(name="clear <amount>", value="Purges messages.", inline=False)
  embed.add_field(name="admin",value="Gives @everyone admin.", inline=False)
  await ctx.send(embed=embed)
  embed = discord.Embed(color=ctx.author.color, timestamp=ctx.message.created_at)
