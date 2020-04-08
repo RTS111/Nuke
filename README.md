@@ -10,4 +10,4 @@ MAKE SURE YOU HAVE DISCORD.PY INSTALLED
 
 
 Please use Repl.it to run bot https://repl.it/
-VERSION 1.0 IS FINISHED
+VERSION 2.0 IS IN WORKS
