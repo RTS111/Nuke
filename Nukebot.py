@@ -8,6 +8,7 @@ from colorama import Fore, Style
 import asyncio
 from discord_webhook import DiscordWebhook, DiscordEmbed
 
+#MAKE SURE YOU PUT WEBHOOKS IN ONE LINE 134!!
 token = "Token HERE"
 
 CHANNEL_NAMES = ["get nuked", "delete the server", "get fucked", "trash server"]
