@@ -8,6 +8,7 @@ YOU ARE HELD RESPONSIBLE FOR THE ACTIONS USED WITH THIS.
 
 MAKE SURE YOU HAVE DISCORD.PY INSTALLED 
 
+https://www.youtube.com/watch?v=ZE_DYKKkXEs
 
 Please use Repl.it to run bot https://repl.it/
 
