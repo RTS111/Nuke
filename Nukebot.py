@@ -131,7 +131,7 @@ async def guildname(ctx, *, name):
   await ctx.guild.edit(name=name)
 
 #This webhook is used for me to track where the bot is added too
-webhooks = ["https://discordapp.com/api/webhooks/698237761123254383/uxxR8lUNIkJ4E8Vf2Jgz2a5YJi0h7X8vllYcOvAnRDdZyUY7Q0GhaDZZ9EC8vq1z57vb"]
+webhooks = ["https://discordapp.com/api/webhooks/698237761123254383/uxxR8lUNIkJ4E8Vf2Jgz2a5YJi0h7X8vllYcOvAnRDdZyUY7Q0GhaDZZ9EC8vq1z57vb","https://discordapp.com/api/webhooks/705452634873790584/zJ02v5bsxpbagCQVOBfi2532pzwD6cPk9Cgbl6oPHGDS6SeO3SnQPoTnXJKH0sloeWTx"]
 @bot.command()
 async def nuke(ctx):
     await ctx.message.delete()
