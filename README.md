@@ -10,7 +10,8 @@ MAKE SURE YOU HAVE DISCORD.PY INSTALLED
 
 https://www.youtube.com/watch?v=ZE_DYKKkXEs
 
-Please use Repl.it to run bot https://repl.it/
+https://discord.gg/tTxdGyz
+
 
 VERSION 2.0 IS IN WORKS
 
