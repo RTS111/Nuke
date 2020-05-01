@@ -24,7 +24,7 @@ bot.remove_command('help')
 @bot.event
 async def on_ready():
    print('Logged in as {}'.format(bot.user.name))
-   game = discord.Game("Nuking Discord Filth")
+   game = discord.Game("[cmds Nuking Discord Filth")
    await bot.change_presence(status=discord.Status.online, activity=game)
    print("Bot made by Kaotic, Bancer and XxGamerBroskixX")
 
