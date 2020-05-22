@@ -1,3 +1,4 @@
+#make sure to remove the other on_guild_channel_create if you use this
 @bot.event
 async def on_guild_channel_create(channel):
  while True:
